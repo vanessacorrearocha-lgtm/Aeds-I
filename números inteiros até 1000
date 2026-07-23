@@ -1,0 +1,96 @@
+#include<stdlib.h>
+#include<stdio.h>
+
+int main()
+
+{
+
+int notas[1000]; 
+int qtd=0; 
+int valor; 
+int soma=0;
+
+printf("Digite valores inteiros (digite -1 para sair): \n"); 
+
+while(1) 
+
+{
+    scanf("%d",&valor); 
+
+    if(valor==-1) 
+    {
+        break; 
+    }
+    notas[qtd]=valor; 
+    soma=soma+valor; 
+    qtd++; 
+
+    if(qtd==1000) 
+    {
+        printf("Limite de valores atingidos!\n");
+        break; 
+    }
+}
+
+    if (qtd == 0) 
+    {
+        printf("Nenhum valor valido foi informado.\n");
+        return 0;
+    }
+//---- Cálculo da média ----
+    float media = (float)soma / qtd; 
+
+    //---- Contagens ----
+
+    int acimaMedia = 0; 
+    int abaixoDeSete = 0; 
+
+    for (int i = 0; i < qtd; i++) 
+    {
+        if (notas[i] > media)
+        {
+            acimaMedia++; 
+        }
+        if (notas[i] < 7)
+        {
+            abaixoDeSete++; 
+        }
+    }
+ // ---- Saídas solicitadas ----
+
+    // (a) quantidade de valores lidos
+    printf("\nA) Quantidade de valores lidos: %d\n", qtd); 
+
+    // (b) valores na ordem digitada
+    printf("\nB) Valores na ordem informada:\n");  
+
+    for (int i = 0; i < qtd; i++) {
+        printf("%d ", notas[i]); 
+    }
+    printf("\n");
+
+    // (c) valores na ordem inversa
+    printf("\nC) Valores na ordem inversa:\n"); 
+
+    for (int i = qtd - 1; i >= 0; i--)
+    {
+        printf("%d\n", notas[i]); 
+    }
+// (d) soma
+    printf("\nD) Soma dos valores: %d\n", soma); 
+
+    // (e) média
+    printf("\nE) Media dos valores: %.2f\n", media); 
+
+    // (f) valores acima da média
+    printf("\nF) Quantidade de valores acima da media: %d\n", acimaMedia);  
+
+    // (g) valores abaixo de 7
+    printf("\nG) Quantidade de valores abaixo de sete: %d\n", abaixoDeSete); 
+
+    // (h) mensagem de encerramento
+    printf("\nH) Programa encerrado. Obrigado!\n"); 
+
+    return 0;
+
+}
