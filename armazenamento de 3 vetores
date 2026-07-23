@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+int main()
+
+{
+    int V1[3],V2[3],V3[3],soma=0;
+   
+    for(int i=0;i<3;i++)
+   
+    {
+        printf("Digite os valores do vetor 1: \n");
+        scanf("%d",&V1[i]);
+    }
+   
+    for(int i=0;i<3;i++)
+    {
+         printf("Digite os valores do vetor 2: \n");
+        scanf("%d",&V2[i]);
+    }
+    printf("Matriz V1: \n");
+   
+     for(int i=0;i<3;i++)
+     {
+         printf("%d",V1[i]);
+     }
+    printf("\nMatriz V2: \n");
+   
+    for(int i=0;i<3;i++)
+     {
+         printf("%d",V2[i]);
+     }
+    printf("\nMatriz V3: \n");
+   
+     for(int i=0;i<3;i++)
+     {
+         V3[i]=V1[i]+V2[i];
+         printf("%d",V3[i]);
+     }
