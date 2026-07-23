@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+struct clientes
+
+{
+    char nomes[50];
+    int cod,tel;
+
+};
+
+int main()
+{
+struct clientes c[2];
+
+for(int i=0;i<2;i++)
+
+{
+    printf("Digite o nome do %d.º cliente: \n",i+1);
+    scanf("%s",c[i].nomes);
+    printf("Digite o codigo: \n");
+    scanf("%d",&c[i].cod);
+    printf("Digite o telefone: \n");
+    scanf("%d",&c[i].tel);
+    printf("\n\n--Lendo os dados do struct--\n\n");
+    printf("Nome do cliente: %s\n",c[i].nomes);
+    printf("Numero do codigo: %d\n",c[i].cod);
+    printf("Numero do telefone: %d\n\n",c[i].tel);
+}
+return(0);
+}
