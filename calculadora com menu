@@ -1,0 +1,127 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int flag=0, flag2 = 0;
+
+float Adicao(float x, float y)
+{
+    float a=x+y;
+    return (a);
+}
+
+float Subtracao(float z, float w)
+{
+    float a=z-w;
+    return(a);
+}
+float Multiplicacao(float v, float c)
+{
+    float a=v*c;
+    return (a);
+}
+float Divisao(float r, float d)
+{
+    float a=r/d;
+    return(a);
+}
+
+void divzero(float num)
+{
+    if(num==0)
+    {
+        flag2 = 1;
+    }
+}
+
+
+int main()
+
+{
+    int op;
+    float s,u,result;
+
+    do
+    {
+        flag2 = 0;
+        system("cls");
+        printf("\nDigite a opcao desejada: \n\n");
+        printf("1-Digite dois valores: \n");
+        printf("2-Adicao: \n");
+        printf("3-Subtracao\n");
+        printf("4-Multiplicacao\n");
+        printf("5-Divisao\n");
+        printf("6-Sair\n\n");
+        scanf("%d",&op);
+
+        switch(op)
+
+        {
+        case 1:
+            scanf("%f%f",&s,&u);
+            flag=1;
+            break;
+        case 2:
+            if(flag == 1)
+            {
+                result=Adicao(s,u);
+                printf("\nO resultado e: %.2f\n\n",result);
+            }
+            else
+            {
+                printf("Voce nao inseriu os valores!");
+            }
+            break;
+        case 3:
+            if(flag == 1)
+            {
+                result=Subtracao(s,u);
+                printf("\nO resultado e: %.2f\n\n",result);
+            }
+            else
+            {
+                printf("Voce nao inseriu os valores!");
+            }
+            break;
+        case 4:
+            if(flag == 1)
+            {
+                result=Multiplicacao(s,u);
+                printf("\nO resultado e: %.2f\n\n",result);
+
+            }
+            else
+            {
+                printf("Voce nao inseriu os valores!");
+            }
+            break;
+
+        case 5:
+            if(flag == 1)
+            {
+                divzero(u);
+                if(flag2 != 1)
+                {
+                    result=Divisao(s,u);
+                    printf("\nO resultado e: %.2f\n\n",result);
+                }
+                else
+                {
+                    printf("O divisor não pode ser 0");
+                }
+            }
+            else
+            {
+                printf("Voce nao inseriu os valores!");
+            }
+            break;
+
+        case 6:
+            printf("Sair.\n\n");
+            break;
+
+        }
+        printf("\n");
+        system("pause");
+    }
+    while(op!=6);
+}
