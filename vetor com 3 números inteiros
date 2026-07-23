@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+int main()
+
+{
+    int V[3];
+   
+    for(int i=0;i<3;i++)
+   
+    {
+        printf("Digite os valores do vetor: \n");
+        scanf("%d",&V[i]);
+    }
+    printf("Vetor V: \n");
+   
+    for(int i=0;i<3;i++)
+   
+    {
+        printf("%d ",V[i]);
+    }
+    for(int i=0;i<3;i++)
+    {
+    if(V[i]%2!=0)
+    {
+        printf("\nNumero impar %d na posição %d",V[i],i);
+    }
+   
+    }
+   
+   
+}
