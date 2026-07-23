@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+#define MAX 100
+
+int main() {
+    int filaA[MAX], filaB[MAX], filaC[MAX * 2];
+    int tamA, tamB;
+    int i = 0, j = 0, k = 0;
+
+    printf("Quantidade de elementos da fila A: ");
+    scanf("%d", &tamA);
+
+    for (i = 0; i < tamA; i++) {
+        printf("A[%d]: ", i);
+        scanf("%d", &filaA[i]);
+    }
+
+    printf("Quantidade de elementos da fila B: ");
+    scanf("%d", &tamB);
+
+    for (i = 0; i < tamB; i++) {
+        printf("B[%d]: ", i);
+        scanf("%d", &filaB[i]);
+    }
+
+    i = 0;
+    j = 0;
+
+    // Intercalação
+    while (i < tamA || j < tamB) {
+        if (i < tamA) {
+            filaC[k++] = filaA[i++];
+        }
+        if (j < tamB) {
+            filaC[k++] = filaB[j++];
+        }
+    }
+
+    printf("\nFila intercalada:\n");
+    for (i = 0; i < k; i++) {
+        printf("%d ", filaC[i]);
+    }
+
+    return 0;
+}
