@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int *dados;     // arranjo dinâmico
+    int inicio;     // início da fila
+    int fim;        // próxima posição livre
+    int tamanho;    // quantidade de elementos
+    int capacidade; // tamanho atual do arranjo
+} Fila;
+
+// Inicializa a fila
+void inicializarFila(Fila *f, int capacidadeInicial) {
+    f->dados = (int *) malloc(capacidadeInicial * sizeof(int));
+    f->inicio = 0;
+    f->fim = 0;
+    f->tamanho = 0;
+    f->capacidade = capacidadeInicial;
+}
+
+// Dobra o tamanho da fila quando cheia
+void dobrarCapacidade(Fila *f) {
+    int novaCapacidade = f->capacidade * 2;
+    int *novoArranjo = (int *) malloc(novaCapacidade * sizeof(int));
+
+    // Copiar os elementos na ordem correta
+    for (int i = 0; i < f->tamanho; i++) {
+        novoArranjo[i] = f->dados[(f->inicio + i) % f->capacidade];
+    }
+
+    free(f->dados);
+
+    f->dados = novoArranjo;
+    f->capacidade = novaCapacidade;
+    f->inicio = 0;
+    f->fim = f->tamanho;
+}
+
+// Enfileirar (enqueue)
+void enfileirar(Fila *f, int valor) {
+    if (f->tamanho == f->capacidade) {
+        dobrarCapacidade(f);
+    }
+
+    f->dados[f->fim] = valor;
+    f->fim = (f->fim + 1) % f->capacidade;
+    f->tamanho++;
+}
+
+// Desenfileirar (dequeue)
+int desenfileirar(Fila *f) {
+    if (f->tamanho == 0) {
+        printf("Fila vazia!\n");
+        return -1;
+    }
+
+    int valor = f->dados[f->inicio];
+    f->inicio = (f->inicio + 1) % f->capacidade;
+    f->tamanho--;
+    return valor;
+}
+
+// Mostrar fila
+void mostrarFila(Fila *f) {
+    printf("Fila: ");
+    for (int i = 0; i < f->tamanho; i++) {
+        printf("%d ", f->dados[(f->inicio + i) % f->capacidade]);
+    }
+    printf("\n");
+}
+
+int main() {
+    Fila fila;
+    inicializarFila(&fila, 4); // capacidade inicial pequena para testar
+
+    enfileirar(&fila, 10);
+    enfileirar(&fila, 20);
+    enfileirar(&fila, 30);
+    enfileirar(&fila, 40);
+    enfileirar(&fila, 50); // aqui a fila dobra de tamanho
+
+    mostrarFila(&fila);
+
+    desenfileirar(&fila);
+    desenfileirar(&fila);
+
+    mostrarFila(&fila);
+
+    return 0;
+}
