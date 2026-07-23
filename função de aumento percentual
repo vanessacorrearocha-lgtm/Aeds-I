@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+float x, y, v;
+void aumento()
+{
+printf("Digite o valor de y: \n");
+scanf("%f",&y);
+printf("Digite o valor de x: \n");
+scanf("%f",&x);
+v=x*(1+(y/100));
+printf("O resultado e: %.2f",v);
+}
+int main()
+{
+aumento();
+}
