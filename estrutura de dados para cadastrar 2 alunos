@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+struct alunos
+
+{
+    char nomes[50];
+    int matricula,idade,sexo;
+    float notas[3],nf;
+};
+
+int main()
+
+{
+    struct alunos a[2];
+   
+    {
+        for(int i=0;i<2;i++)
+        {
+            printf("Digite o nome do %d.° aluno: \n",i+1);
+            scanf("%s",a[i].nomes);
+            printf("Digite o numero da matricula\n");
+            scanf("%d",&a[i].matricula);
+            printf("Digite a idade\n");
+            scanf("%d",&a[i].idade);
+            printf("sexo(1-Feminino, 2-Masculino): \n");
+            scanf("%d",&a[i].sexo);
+           
+            float soma=0;
+           
+            for(int j=0;j<3;j++)
+            {
+                printf("Nota %d: ",j+1);
+                scanf("%f", &a[i].notas[j]);
+                soma=soma+a[i].notas[j];
+            }
+            a[i].nf=soma/3;
+               
+                if(a[i].nf>=60)
+            {
+                printf("Aluno(a) %d aprovado com media %.2f\n\n",i+1,a[i].nf);
+            }
+           
+            else{printf("Aluno(a) %d reprovado com media %.2f\n\n",i+1,a[i].nf);}
+   
+           
+        }
+
+        return(0);
+       
+    }
+}
