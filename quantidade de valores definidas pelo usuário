@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+#define MAX 100
+
+int main() {
+    int lista[MAX];
+    int qtd, i;
+    int maior, menor;
+    float soma = 0, media;
+
+    printf("Quantos valores deseja informar? ");
+    scanf("%d", &qtd);
+
+    // Leitura dos valores
+    for (i = 0; i < qtd; i++) {
+        printf("Digite o %dº valor: ", i + 1);
+        scanf("%d", &lista[i]);
+    }
+
+    // Inicialização do maior e menor
+    maior = menor = lista[0];
+
+    // Processamento
+    for (i = 0; i < qtd; i++) {
+        soma += lista[i];
+
+        if (lista[i] > maior) {
+            maior = lista[i];
+        }
+
+        if (lista[i] < menor) {
+            menor = lista[i];
+        }
+    }
+
+    // Cálculo da média
+    media = soma / qtd;
+
+    // Saída dos resultados
+    printf("\nMaior valor: %d", maior);
+    printf("\nMenor valor: %d", menor);
+    printf("\nMedia aritmetica: %.2f\n", media);
+
+    return 0;
+}
