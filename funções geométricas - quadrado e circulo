@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<stdlib.h>
+float area, lado, raio;
+void calculoA()
+{
+area=lado*lado;
+printf("A area e: %.2f",area);
+}
+void calculoC()
+{
+area=(raio*raio)*3.14;
+printf("A area e: %.2f",area);
+}
+int main()
+{
+int op;
+printf("Digite a opcao desejada: \n");
+printf("1-Quadrado, 2-Circulo\n");
+scanf("%d",&op);
+switch(op)
+{
+case 1:
+printf("Digite o valor do lado: \n");
+scanf("%f",&lado);
+calculoA();
+break;
+case 2:
+printf("Digite o valor do raio: \n");
+scanf("%f",&raio);
+calculoC();
+break;
+default:
+printf("Valor invalido!\n");
+break;
+}
+
+}
