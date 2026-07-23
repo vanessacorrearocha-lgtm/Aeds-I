@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+struct funcionarios
+
+{
+    char nomes[50];
+    int salario;
+    float ht[3],soma;
+};
+
+int main()
+{
+
+struct funcionarios f[3];
+
+{
+    for(int i=0;i<3;i++)
+    {
+        printf("Digite o nome do %d.º funcionario: \n",i+1);
+        scanf("%s",f[i].nomes);
+        printf("Digite o salario: \n");
+        scanf("%d",&f[i].salario);
+    }
+   
+    float soma=0;
+   
+    for(int j=0;j<3;j++)
+    {
+        printf("Horas Trabalhadas do %d funcionario: \n",j+1);
+        scanf("%f",&f[j].ht[j]);
+        f[j].soma=f[j].soma+f[j].ht[j];
+    }
+   
+    printf("Os funcionarios com salarios entre R$ 1000 e R$ 2000 reais sao: \n");
+   
+   for(int i=0;i<3;i++)
+   {
+   
+    if(f[i].salario >= 1000 && f[i].salario <= 2000)
+    {
+        printf("Funcionario(a) %s trabalhou %.2f horas\n",f[i].nomes,f[i].soma);
+    }
+  }
+   return(0);
+}
+}
