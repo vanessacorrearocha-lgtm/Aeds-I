@@ -1,0 +1,162 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MaxTam 3
+
+typedef int Apontador;
+
+typedef struct
+{
+    int cod;
+}TipoItem;
+
+typedef struct
+{
+    TipoItem Item[MaxTam];
+    Apontador Frente;
+    Apontador Tras;
+} TipoFila;
+
+TipoFila Fila;
+TipoItem x;
+int tamanho=0;
+
+
+void FFVazia (TipoFila *Fila)
+{
+    Fila->Frente=1;
+    Fila->Tras=Fila->Frente;
+    tamanho=0;
+}
+
+int Vazia (TipoFila Fila)
+{
+    return(Fila.Frente==Fila.Tras);
+}
+
+void Enfileira(TipoItem x, TipoFila *Fila)
+{
+    if (Fila->Tras % MaxTam+1==Fila->Frente)
+        printf("\n A Fila esta cheia\n");
+    else
+    {
+        Fila->Item [Fila->Tras - 1]=x;
+        Fila->Tras= Fila ->Tras % MaxTam+1;
+        tamanho++;
+    }
+
+}
+
+
+int TamanhoFila(TipoFila Fila)
+{
+   return(tamanho);
+}
+
+void Imprime (TipoFila Fila)
+{
+    int aux, i;
+    if (Vazia (Fila)==1)
+    {
+        printf("A fila não contém elementos\n");
+    }
+    else
+    {
+        aux=Fila.Frente-1;
+        for (i=0;i<tamanho;i=i+1)
+
+        {
+            printf("Cod: %d\n", Fila.Item[aux].cod);
+            aux = aux + 1;
+            if (aux==MaxTam)
+                aux=0;
+        }
+    }
+}
+
+void Desenfileira (TipoFila *Fila, TipoItem *x)
+{
+
+    if (Vazia (*Fila))
+    {
+        printf("ERRO: Fila vazia\n");
+    }
+    else
+    {
+        *x = Fila->Item[Fila->Frente-1];
+        printf("O elemento desenfileirado foi o de codigo %d\n", x->cod);
+        Fila->Frente=Fila->Frente % MaxTam +1;
+        tamanho=tamanho-1;
+    }
+
+}
+
+int main ()
+{
+    int opcao, resposta;
+    FFVazia(&Fila);
+    do
+    {
+
+        printf("\n\nMENU\n\n");
+        printf("Digite a opcão desejada:\n ");
+        printf("0 - Sair\n");
+        printf("1 - Esvaziar Fila\n");
+        printf("2 - Verificar se a fila esta vazia\n");
+        printf("3 - Enfileirar\n");
+        printf("4 - Imprimir os elementos da fila\n");
+        printf("5 - Desenfileira elemento da fila\n");
+        printf("6 - Tamanho da fila\n");
+        scanf("%d", &opcao);
+        switch (opcao)
+        {
+            case 0:
+            {
+                printf("PROGRAMA ENCERRADO!\n");
+                break;
+            }
+            case 1:
+            {
+                FFVazia(&Fila);
+                printf("\nA FILA VAZIA\n");
+                break;
+            }
+           case 2:
+            {
+                resposta=Vazia(Fila);
+                if(resposta==1)
+                    printf("\n Fila esta vazia\n");
+                else
+                    printf("\n Fila não esta vazia\n");
+                break;
+            }
+            case 3:
+            {
+                printf("Digite o codigo\n");
+                scanf("%d", &x.cod);
+                Enfileira(x, &Fila);
+                break;
+            }
+            case 4:
+            {
+                Imprime(Fila);
+                break;
+            }
+            case 5:
+            {
+                Desenfileira(&Fila, &x);
+                break;
+            }
+            case 6:
+            {
+                printf("A fila contem %d elementos\n", TamanhoFila(Fila));
+                break;
+            }
+
+            default: printf("\n\nOpcao invalida\n\n");
+        }
+        _getch();
+        system("cls");
+    } while (opcao != 0);
+    return(0);
+}
